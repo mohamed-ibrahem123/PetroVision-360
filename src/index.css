@@ -1,111 +1,228 @@
+/* ==========================================================================
+   PetroVision 360 - Design System & Core Styles
+   ========================================================================== */
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --pv-font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --pv-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  /* Color Palette matching PetroVision 360 Industrial Identity */
+  --pv-color-bg-dark: #06111b;
+  --pv-color-petrol-blue: #11536b;
+  --pv-color-petrol-hover: #166482;
+  --pv-color-sky: #38bdf8;
+  --pv-color-amber: #f59e0b;
+  --pv-color-white: #ffffff;
+  --pv-color-slate-100: #f1f5f9;
+  --pv-color-slate-200: #e2e8f0;
+  --pv-color-slate-300: #cbd5e1;
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  /* Glassmorphism Tokens */
+  --pv-glass-bg: rgba(12, 34, 50, 0.42);
+  --pv-glass-border: rgba(255, 255, 255, 0.13);
+  --pv-glass-border-hover: rgba(56, 189, 248, 0.35);
+  --pv-glass-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+  --pv-glass-blur: 16px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--pv-color-bg-dark);
+  color: var(--pv-color-white);
+  font-family: var(--pv-font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
+  overflow-x: hidden;
 }
 
 #root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+
+
+/* ==========================================================================
+   Navbar Styles
+   ========================================================================== */
+
+.pv-navbar-wrapper {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  padding: 30px 60px;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+.pv-navbar-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
+.pv-nav-brand-link {
+  text-decoration: none;
   display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+  align-items: center;
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.pv-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pv-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.35));
+  transition: transform 0.25s ease;
+}
+
+.pv-logo:hover .pv-logo-img {
+  transform: scale(1.05);
+}
+
+
+.pv-brand-text {
+  font-family: var(--pv-font-heading);
+  font-weight: 800;
+  font-size: 1.22rem;
+  letter-spacing: 0.03em;
+  color: var(--pv-color-white);
+  text-transform: uppercase;
+}
+
+.pv-desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.pv-nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 36px;
+}
+
+.pv-nav-link {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.pv-nav-link:hover {
+  color: var(--pv-color-white);
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+}
+
+.pv-btn-demo {
+  background-color: var(--pv-color-white);
+  color: #0c435c;
+  font-family: var(--pv-font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 10px 34px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.pv-btn-demo:hover {
+  background-color: var(--pv-color-slate-100);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile Hamburger Toggle */
+.pv-mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 32px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 30;
+}
+
+.pv-hamburger-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--pv-color-white);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.pv-mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  margin-top: 16px;
+  background: rgba(8, 22, 35, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--pv-glass-border);
+  border-radius: 14px;
+}
+
+.pv-mobile-link {
+  color: var(--pv-color-white);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pv-mobile-actions {
+  margin-top: 8px;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  .pv-navbar-wrapper {
+    padding: 20px 28px;
+  }
+
+  .pv-desktop-nav {
+    display: none;
+  }
+
+  .pv-mobile-toggle {
+    display: flex;
+  }
+}
+
+@media (max-width: 680px) {
+  .pv-navbar-wrapper {
+    padding: 16px 20px;
+  }
+
+  .pv-brand-text {
+    font-size: 1rem;
+  }
 }

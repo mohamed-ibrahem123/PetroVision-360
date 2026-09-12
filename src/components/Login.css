@@ -1,0 +1,312 @@
+/* ==========================================================================
+   Login Page Layout & Styles
+   ========================================================================== */
+
+.pv-login-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--pv-color-white);
+}
+
+/* Left Side: Image with Overlay */
+.pv-login-left {
+  position: relative;
+  flex: 1;
+  display: none;
+  background-image: url('../assets/left-image.png');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 900px) {
+  .pv-login-left {
+    display: block;
+  }
+}
+
+.pv-login-overlay {
+  position: absolute;
+  inset: 0;
+  /* Matching the dark blue overlay from the reference */
+  background-color: rgba(13, 62, 85, 0.85); 
+}
+
+.pv-login-logo-container {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pv-login-logo-container .pv-logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.pv-login-logo-container .pv-brand-text {
+  font-family: var(--pv-font-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--pv-color-white);
+  text-transform: uppercase;
+}
+
+/* Right Side: Form Section */
+.pv-login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+}
+
+.pv-login-form-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Header */
+.pv-login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.pv-login-header-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
+
+.pv-login-title {
+  font-family: var(--pv-font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #11364d;
+  margin-bottom: 12px;
+}
+
+.pv-login-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.5;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Form Fields */
+.pv-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pv-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pv-form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.pv-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pv-input-icon-left {
+  position: absolute;
+  left: 14px;
+  color: #11536b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pv-input-icon-right {
+  position: absolute;
+  right: 14px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pv-form-input {
+  width: 100%;
+  padding: 12px 14px 12px 42px; /* padding-left for icon */
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: var(--pv-font-body);
+  font-size: 0.95rem;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pv-form-input::placeholder {
+  color: #94a3b8;
+}
+
+.pv-form-input:focus {
+  border-color: #11536b;
+  box-shadow: 0 0 0 3px rgba(17, 83, 107, 0.15);
+}
+
+/* Select specific styles */
+.pv-form-select {
+  appearance: none;
+  padding-right: 40px; /* space for arrow */
+}
+
+/* Form Actions */
+.pv-login-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -4px;
+  margin-bottom: 24px;
+}
+
+.pv-checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.pv-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1px solid #cbd5e1;
+  accent-color: #11536b;
+  cursor: pointer;
+}
+
+.pv-checkbox-label {
+  font-size: 0.8rem;
+  color: #475569;
+  cursor: pointer;
+}
+
+.pv-forgot-link {
+  font-size: 0.8rem;
+  color: #11536b;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.pv-forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.pv-login-submit {
+  width: 100%;
+  background-color: #11536b;
+  color: var(--pv-color-white);
+  font-family: var(--pv-font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.pv-login-submit:hover {
+  background-color: #0d4458;
+}
+
+.pv-login-submit:active {
+  transform: translateY(1px);
+}
+
+/* Footer Link */
+.pv-login-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.pv-signup-link {
+  color: #11536b;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.pv-signup-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes pv-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes pv-slide-up {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.pv-login-left {
+  animation: pv-fade-in 1s ease-out forwards;
+}
+
+.pv-login-header {
+  animation: pv-slide-up 0.6s ease-out forwards;
+}
+
+.pv-login-form > .pv-form-group:nth-child(1) {
+  animation: pv-slide-up 0.5s ease-out 0.1s both;
+}
+
+.pv-login-form > .pv-form-group:nth-child(2) {
+  animation: pv-slide-up 0.5s ease-out 0.2s both;
+}
+
+.pv-login-form > .pv-form-group:nth-child(3) {
+  animation: pv-slide-up 0.5s ease-out 0.3s both;
+}
+
+.pv-login-form > .pv-login-actions {
+  animation: pv-slide-up 0.5s ease-out 0.4s both;
+}
+
+.pv-login-form > .pv-login-submit {
+  animation: pv-slide-up 0.5s ease-out 0.5s both;
+}
+
+.pv-login-footer {
+  animation: pv-slide-up 0.5s ease-out 0.6s both;
+}

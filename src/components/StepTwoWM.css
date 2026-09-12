@@ -1,0 +1,196 @@
+/* ==========================================================================
+   StepTwoManager Layout & Styles
+   ========================================================================== */
+
+.pv-step2-container {
+  width: 100%;
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Stepper V2 */
+.pv-stepper-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  animation: pv-slide-up 0.6s ease-out 0.2s both;
+}
+
+.pv-stepper-line {
+  flex: 1;
+  height: 2px;
+  background-color: #e2e8f0;
+  margin: 0 16px;
+  position: relative;
+  top: -8px;
+}
+
+.pv-stepper-line-active {
+  background-color: #1a56db;
+}
+
+.pv-step-v2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.6;
+}
+
+.pv-step-v2-active,
+.pv-step-v2-completed {
+  opacity: 1;
+}
+
+.pv-step-v2-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: var(--pv-font-heading);
+}
+
+.pv-step-v2-active .pv-step-v2-circle {
+  background-color: #1a56db; /* Deep blue active */
+  color: var(--pv-color-white);
+}
+
+.pv-step-v2-completed .pv-step-v2-circle {
+  background-color: #eff6ff; /* Light blue completed */
+  color: #1a56db;
+}
+
+.pv-step-v2-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pv-step-v2-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  text-transform: capitalize;
+}
+
+.pv-step-v2-desc {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.pv-step-v2-active .pv-step-v2-name,
+.pv-step-v2-completed .pv-step-v2-name {
+  color: #1e293b;
+}
+
+.pv-step-v2-active .pv-step-v2-desc {
+  color: #475569;
+}
+
+/* Form Styles */
+.pv-step2-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: pv-slide-up 0.6s ease-out 0.3s both;
+}
+
+.pv-step2-form .pv-form-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: var(--pv-font-body);
+  font-size: 0.95rem;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pv-step2-form .pv-form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #64748b; /* color for placeholder matching */
+}
+
+/* When option is selected or focus is on, text is darker */
+.pv-step2-form .pv-form-select:focus,
+.pv-step2-form .pv-form-select:valid {
+  color: #0f172a;
+}
+
+/* Fix for default select padding with icon */
+.pv-step2-form .pv-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pv-step2-form .pv-input-icon-right {
+  position: absolute;
+  right: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.pv-step2-form .pv-form-input:focus {
+  border-color: #11536b;
+  box-shadow: 0 0 0 3px rgba(17, 83, 107, 0.15);
+}
+
+.pv-step2-form .pv-form-input::placeholder {
+  color: #94a3b8;
+}
+
+.pv-step2-submit {
+  width: 100%;
+  background-color: #11536b;
+  color: var(--pv-color-white);
+  font-family: var(--pv-font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.pv-step2-submit:hover {
+  background-color: #0d4458;
+}
+
+.pv-step2-submit:active {
+  transform: translateY(1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .pv-stepper-v2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .pv-stepper-line {
+    display: none;
+  }
+}

@@ -1,0 +1,243 @@
+/* ==========================================================================
+   SignIn Page Layout & Styles
+   ========================================================================== */
+
+.pv-signin-wrapper {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--pv-color-white);
+}
+
+/* Left Side: Image with Overlay */
+.pv-signin-left {
+  position: relative;
+  flex: 1;
+  display: none;
+  background-image: url('../assets/left-image.png');
+  background-size: cover;
+  background-position: center;
+}
+
+@media (min-width: 900px) {
+  .pv-signin-left {
+    display: block;
+  }
+}
+
+.pv-signin-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(13, 62, 85, 0.85);
+}
+
+.pv-signin-logo-container {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Right Side: Form Section */
+.pv-signin-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 24px;
+}
+
+.pv-signin-form-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Header */
+.pv-signin-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.pv-signin-header-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
+
+.pv-signin-title {
+  font-family: var(--pv-font-heading);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #11364d;
+  margin-bottom: 12px;
+}
+
+.pv-signin-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.5;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Form Fields */
+.pv-signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pv-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pv-form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.pv-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pv-input-icon-left {
+  position: absolute;
+  left: 14px;
+  color: #11536b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pv-input-icon-right {
+  position: absolute;
+  right: 14px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pv-form-input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  /* padding-left for icon */
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-family: var(--pv-font-body);
+  font-size: 0.95rem;
+  color: #0f172a;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pv-form-input::placeholder {
+  color: #94a3b8;
+}
+
+.pv-form-input:focus {
+  border-color: #11536b;
+  box-shadow: 0 0 0 3px rgba(17, 83, 107, 0.15);
+}
+
+/* Submit Button */
+.pv-signin-submit {
+  width: 100%;
+  background-color: #11536b;
+  color: var(--pv-color-white);
+  font-family: var(--pv-font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pv-signin-submit:hover {
+  background-color: #0d4458;
+}
+
+.pv-signin-submit:active {
+  transform: translateY(1px);
+}
+
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+@keyframes pv-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pv-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pv-signin-left {
+  animation: pv-fade-in 1s ease-out forwards;
+}
+
+.pv-signin-header {
+  animation: pv-slide-up 0.6s ease-out forwards;
+}
+
+.pv-signin-form>.pv-form-group:nth-child(1) {
+  animation: pv-slide-up 0.5s ease-out 0.1s both;
+}
+
+.pv-signin-form>.pv-form-group:nth-child(2) {
+  animation: pv-slide-up 0.5s ease-out 0.2s both;
+}
+
+.pv-signin-form>.pv-form-group:nth-child(3) {
+  animation: pv-slide-up 0.5s ease-out 0.3s both;
+}
+
+.pv-signin-form>.pv-form-group:nth-child(4) {
+  animation: pv-slide-up 0.5s ease-out 0.4s both;
+}
+
+.pv-signin-form>.pv-signin-submit {
+  animation: pv-slide-up 0.5s ease-out 0.5s both;
+}
+
+.pv-signin-footer {
+  animation: pv-slide-up 0.5s ease-out 0.6s both;
+}
