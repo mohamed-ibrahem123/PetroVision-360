@@ -1,0 +1,126 @@
+.pv-upload-box {
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  transition: border-color 0.2s;
+}
+
+.pv-upload-box:hover {
+  border-color: #94a3b8;
+}
+
+.pv-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.pv-upload-icon {
+  color: #0f4a6e;
+  margin-bottom: 1rem;
+}
+
+.pv-upload-text {
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.pv-upload-subtext {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.pv-btn-submit {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  background-color: #0f4a6e;
+  color: white;
+  transition: opacity 0.2s;
+}
+
+.pv-btn-submit:disabled {
+  background-color: #f8fafc;
+  color: #94a3b8;
+  cursor: not-allowed;
+  border: 1px solid #e2e8f0;
+}
+
+/* Success View */
+.pv-success-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.pv-success-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  background: #f0fdf4;
+  border-radius: 50%;
+  border: 2px solid #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #22c55e;
+  box-shadow: 0px 4px 30px rgba(34, 197, 94, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.pv-success-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.pv-success-message {
+  font-size: 0.875rem;
+  color: #475569;
+  max-width: 380px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.pv-btn-dashboard {
+  background-color: #0f4a6e;
+  color: white;
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.2s;
+}
+
+.pv-btn-dashboard:hover {
+  background-color: #0b3753;
+}
+
+.pv-assistance-text {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.pv-assistance-text a {
+  color: #64748b;
+  text-decoration: underline;
+}
