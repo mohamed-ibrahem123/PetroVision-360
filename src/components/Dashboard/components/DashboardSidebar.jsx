@@ -1,6 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { tokenStorage } from '../../../services/api';
 import logoSrc from '../../../assets/logo.svg';
+import Logo from "../../common/Logo"
 
 export default function DashboardSidebar({ isOpen }) {
   const location = useLocation();
@@ -23,25 +24,25 @@ export default function DashboardSidebar({ isOpen }) {
   if (role === 'DepartmentManager' || role === 'Department Manager') {
     menuItems = [
       { label: 'Dashboard', path: '/department-manager-dashboard', icon: 'grid', badge: null },
-      { label: 'Digital Twin', path: '/department-manager-dashboard/digital-twin', icon: 'box', badge: { text: 'Live', type: 'live' } },
-      { label: 'Live Monitoring', path: '/department-manager-dashboard/monitoring', icon: 'video', badge: null },
-      { label: 'Alerts', path: '/department-manager-dashboard/alerts', icon: 'bell', badge: { text: '4 Today', type: 'warning' } },
-      { label: 'Incidents', path: '/department-manager-dashboard/incidents', icon: 'alert-triangle', badge: { text: '1 Pending', type: 'critical' } },
-      { label: 'Technicians Team', path: '/department-manager-dashboard/team', icon: 'users', badge: null },
-      { label: 'Equipment & Assets', path: '/department-manager-dashboard/assets', icon: 'settings', badge: null },
+      { label: 'Digital Twin', path: '#', icon: 'box', badge: { text: 'Live', type: 'live' } },
+      { label: 'Live Monitoring', path: '#', icon: 'video', badge: null },
+      { label: 'Alerts', path: '#', icon: 'bell', badge: { text: '4 Today', type: 'warning' } },
+      { label: 'Incidents', path: '#', icon: 'alert-triangle', badge: { text: '1 Pending', type: 'critical' } },
+      { label: 'Technicians Team', path: '#', icon: 'users', badge: null },
+      { label: 'Equipment & Assets', path: '#', icon: 'settings', badge: null },
       { label: 'Analytics & Reports', path: '/department-manager-dashboard/analytics', icon: 'bar-chart', badge: null },
     ];
   } else {
     // Default / Facility Manager
     menuItems = [
       { label: 'Dashboard', path: '/dashboard', icon: 'grid', badge: null },
-      { label: 'Digital Twin', path: '/dashboard/digital-twin', icon: 'box', badge: { text: 'Live', type: 'live' } },
-      { label: 'Live Monitoring', path: '/dashboard/monitoring', icon: 'video', badge: null },
-      { label: 'Alerts', path: '/dashboard/alerts', icon: 'bell', badge: { text: '7', type: 'warning' } },
-      { label: 'Incidents', path: '/dashboard/incidents', icon: 'alert-triangle', badge: { text: '1 Active', type: 'critical' } },
-      { label: 'Management Team', path: '/dashboard/team', icon: 'users', badge: null },
-      { label: 'Equipment & Assets', path: '/dashboard/assets', icon: 'settings', badge: null },
-      { label: 'Analytics & Reports', path: '/dashboard/analytics', icon: 'bar-chart', badge: null },
+      { label: 'Digital Twin', path: '#', icon: 'box', badge: { text: 'Live', type: 'live' } },
+      { label: 'Live Monitoring', path: '#', icon: 'video', badge: null },
+      { label: 'Alerts', path: '#', icon: 'bell', badge: { text: '7', type: 'warning' } },
+      { label: 'Incidents', path: '#', icon: 'alert-triangle', badge: { text: '1 Active', type: 'critical' } },
+      { label: 'Management Team', path: '#', icon: 'users', badge: null },
+      { label: 'Equipment & Assets', path: '#', icon: 'settings', badge: null },
+      { label: 'Analytics & Reports', path: '#', icon: 'bar-chart', badge: null },
     ];
   }
 
@@ -64,11 +65,12 @@ export default function DashboardSidebar({ isOpen }) {
   return (
     <aside className={`fm-sidebar ${isOpen ? 'open' : ''}`}>
       <div className="fm-sidebar-logo">
-        <img src={logoSrc} alt="Petro Vision 360" />
+        {/* <img src={logoSrc} alt="Petro Vision 360" /> <span >PETRO VISION360</span> */}
+        <Logo fontColor="#000000" fontSize="15px" />
       </div>
-      
+
       <div className="fm-menu-label">MENU</div>
-      
+
       <nav className="fm-sidebar-menu">
         {menuItems.map((item, idx) => {
           const isActive = currentPath === item.path;
@@ -88,7 +90,7 @@ export default function DashboardSidebar({ isOpen }) {
 
       <div className="fm-menu-label">GENERAL</div>
       <nav className="fm-sidebar-menu" style={{ flex: 'none' }}>
-        <Link to="/settings" className="fm-menu-item">
+        <Link to="#" className="fm-menu-item">
           <div className="fm-menu-item-left">
             {renderIcon('settings')}
             Settings
