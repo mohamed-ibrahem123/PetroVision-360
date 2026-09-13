@@ -69,13 +69,41 @@ export default function FacilityManagerDashboard() {
   if (!data || !data.hasData) {
     return (
       <div className="fm-dashboard-layout">
-        <DashboardSidebar />
+        <div className={`fm-sidebar-overlay ${sidebarOpen ? 'open' : ''}`} onClick={() => setSidebarOpen(false)}></div>
+        <DashboardSidebar isOpen={sidebarOpen} />
+        
         <div className="fm-main-content">
-          <DashboardHeader welcomeMessage="Welcome" facilityName="Facility" location="Unknown" />
-          <div className="fm-empty-container">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: 16 }}><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
-            <h2 style={{ margin: 0, color: '#0f172a' }}>No Dashboard Data Available</h2>
-            <p style={{ color: '#64748b' }}>The facility manager dashboard currently has no data to display.</p>
+          <DashboardHeader 
+            welcomeMessage={data?.welcomeMessage} 
+            facilityName={data?.facilityName} 
+            location={data?.location} 
+            onMenuClick={() => setSidebarOpen(true)}
+          />
+          <div className="fm-dashboard-body">
+            <h2 style={{ fontSize: '1.2rem', fontWeight: 700, margin: '0 0 8px 0', color: '#0f172a' }}>Over View</h2>
+            
+            <div className="fm-overview-grid">
+              <StatCard type="cameras" title="Cameras" isEmpty={true} />
+              <StatCard type="incidents" title="Incidents" isEmpty={true} />
+              <StatCard type="alerts" title="Alerts" isEmpty={true} />
+              <StatCard type="team" title="Team Managers" isEmpty={true} />
+            </div>
+            
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', textAlign: 'center', marginTop: '24px', animation: 'fmFadeIn 0.5s ease' }}>
+              <div style={{ color: '#cbd5e1', marginBottom: '8px' }}>
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M21 8H3V4h18v4zm-2 2H5v10h14V10zm-5 4H10v-2h4v2z" />
+                </svg>
+              </div>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#0f172a', margin: 0 }}>There is no data currently</h2>
+              <p style={{ color: '#475569', fontSize: '0.95rem', maxWidth: '500px', lineHeight: 1.5, margin: 0, fontWeight: 500 }}>
+                Welcome! Start by setting up your facility details to view live telemetry, analytics, and active alerts
+              </p>
+              <button style={{ backgroundColor: '#11536b', color: 'white', border: 'none', borderRadius: '6px', padding: '12px 24px', fontSize: '0.9rem', fontWeight: 600, marginTop: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px', transition: 'all 0.3s' }}>
+                Add Facility Details
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-export default function StatCard({ title, value, subtitle, statusTag, type }) {
+export default function StatCard({ title, value, subtitle, statusTag, type, isEmpty }) {
   // Determine colors based on type or statusTag
   let colorClass = 'blue';
   if (type === 'cameras') colorClass = 'green';
@@ -29,14 +29,23 @@ export default function StatCard({ title, value, subtitle, statusTag, type }) {
           {renderIcon()}
         </div>
       </div>
-      <div className="fm-stat-value-row">
-        <span className="fm-stat-value">{value}</span>
-        <span className={`fm-stat-tag ${colorClass}`}>{statusTag}</span>
-      </div>
-      <div className="fm-stat-footer">
-        <div className={`fm-stat-footer-dot ${colorClass}`}></div>
-        <span>{subtitle}</span>
-      </div>
+      
+      {isEmpty ? (
+        <div className="fm-stat-value-row" style={{ marginTop: '16px', justifyContent: 'center' }}>
+          <span style={{ fontSize: '2.5rem', fontWeight: 600, color: '#94a3b8', lineHeight: 0.8 }}>—</span>
+        </div>
+      ) : (
+        <>
+          <div className="fm-stat-value-row">
+            <span className="fm-stat-value">{value}</span>
+            {statusTag && <span className={`fm-stat-tag ${colorClass}`}>{statusTag}</span>}
+          </div>
+          <div className="fm-stat-footer">
+            <div className={`fm-stat-footer-dot ${colorClass}`}></div>
+            <span>{subtitle}</span>
+          </div>
+        </>
+      )}
     </div>
   );
 }
