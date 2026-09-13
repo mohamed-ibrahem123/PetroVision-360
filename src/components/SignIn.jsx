@@ -243,7 +243,10 @@ export default function SignIn() {
             </button>
           </form>
 
-
+          <div className="pv-signin-footer">
+            Already have an account?
+            <Link to="/login" className="pv-login-link">Login</Link>
+          </div>
 
         </div>
       </div>

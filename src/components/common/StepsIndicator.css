@@ -1,0 +1,114 @@
+/* ==========================================================================
+   Steps Indicator Layout & Styles (Shared)
+   ========================================================================== */
+
+.pv-stepper-v2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  animation: pv-slide-up 0.6s ease-out 0.2s both;
+  width: 100%;
+}
+
+.pv-stepper-line {
+  flex: 1;
+  height: 2px;
+  background-color: #e2e8f0;
+  margin: 0 16px;
+  position: relative;
+  top: -8px;
+}
+
+/* Animated progress layer */
+.pv-stepper-line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #1a56db;
+  transition: width 0.5s ease-in-out;
+}
+
+.pv-step-v2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.6;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.pv-step-v2-active,
+.pv-step-v2-completed {
+  opacity: 1;
+}
+
+.pv-step-v2-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #f1f5f9;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: var(--pv-font-heading);
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.pv-step-v2-active .pv-step-v2-circle {
+  background-color: #1a56db; /* Deep blue active */
+  color: var(--pv-color-white);
+  transform: scale(1.05);
+}
+
+.pv-step-v2-completed .pv-step-v2-circle {
+  background-color: #eff6ff; /* Light blue completed */
+  color: #1a56db;
+  transform: scale(1);
+}
+
+.pv-step-v2-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pv-step-v2-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #334155;
+  text-transform: capitalize;
+  transition: color 0.4s ease-in-out;
+}
+
+.pv-step-v2-desc {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  transition: color 0.4s ease-in-out;
+}
+
+.pv-step-v2-active .pv-step-v2-name,
+.pv-step-v2-completed .pv-step-v2-name {
+  color: #1e293b;
+}
+
+.pv-step-v2-active .pv-step-v2-desc {
+  color: #475569;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .pv-stepper-v2 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .pv-stepper-line {
+    display: none;
+  }
+}

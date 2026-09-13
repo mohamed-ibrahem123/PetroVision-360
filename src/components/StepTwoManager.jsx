@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from './common/Logo';
+import StepsIndicator from './common/StepsIndicator';
 import logoSrc from '../assets/logo.svg';
 import { api } from '../services/api';
 import './StepTwoManager.css';
@@ -68,49 +69,11 @@ export default function StepTwoManager() {
             <h1 className="pv-signin-title">Welcome to PETRO VISION</h1>
           </div>
 
-          {/* Stepper */}
-          <div className="pv-stepper-v2">
-            {/* Step 1 (Completed) */}
-            <div className="pv-step-v2 pv-step-v2-completed">
-              <div className="pv-step-v2-circle">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              </div>
-              <div className="pv-step-v2-info">
-                <span className="pv-step-v2-name">Step 1</span>
-                <span className="pv-step-v2-desc">Choose Your Role</span>
-              </div>
-            </div>
-
-            {/* Connecting Line */}
-            <div className="pv-stepper-line pv-stepper-line-active"></div>
-
-            {/* Step 2 (Active) */}
-            <div className="pv-step-v2 pv-step-v2-active">
-              <div className="pv-step-v2-circle">2</div>
-              <div className="pv-step-v2-info">
-                <span className="pv-step-v2-name">Step 2</span>
-                <span className="pv-step-v2-desc">Facility Information</span>
-              </div>
-            </div>
-
-            {/* Connecting Line */}
-            <div className="pv-stepper-line"></div>
-
-            {/* Step 3 (Inactive) */}
-            <div className="pv-step-v2">
-              <div className="pv-step-v2-circle">3</div>
-              <div className="pv-step-v2-info">
-                <span className="pv-step-v2-name">Step 3</span>
-                <span className="pv-step-v2-desc">Upload Evidence</span>
-              </div>
-            </div>
-          </div>
+          <StepsIndicator currentStep={2} />
 
           {/* Form */}
           <form className="pv-step2-form" onSubmit={handleSubmit}>
-            
+
             {error && (
               <div className="pv-signin-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
                 {typeof error === 'string' ? error : (
@@ -131,10 +94,10 @@ export default function StepTwoManager() {
             <div className="pv-form-group">
               <label className="pv-form-label">Facility Name*</label>
               <div className="pv-input-wrapper">
-                <input 
-                  type="text" 
-                  className="pv-form-input" 
-                  placeholder="Enter facility name" 
+                <input
+                  type="text"
+                  className="pv-form-input"
+                  placeholder="Enter facility name"
                   value={facilityName}
                   onChange={(e) => setFacilityName(e.target.value)}
                   disabled={loading}
@@ -145,10 +108,10 @@ export default function StepTwoManager() {
             <div className="pv-form-group">
               <label className="pv-form-label">Location*</label>
               <div className="pv-input-wrapper">
-                <input 
-                  type="text" 
-                  className="pv-form-input" 
-                  placeholder="Enter facility location" 
+                <input
+                  type="text"
+                  className="pv-form-input"
+                  placeholder="Enter facility location"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   disabled={loading}

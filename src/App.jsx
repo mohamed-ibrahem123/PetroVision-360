@@ -6,7 +6,7 @@ import SignInStep1 from './components/SignInStep1';
 import StepTwoWM from './components/StepTwoWM';
 import StepTwoManager from './components/StepTwoManager';
 import StepThreeUpload from './components/StepThreeUpload';
-
+import FacilityManagerDashboard from './components/Dashboard/FacilityManagerDashboard';
 function AppRoutes() {
   const navigate = useNavigate();
 
@@ -40,6 +40,7 @@ function AppRoutes() {
       <Route path="/sign-in/step-2-wm" element={<StepTwoWM />} />
       <Route path="/sign-in/step-2-manager" element={<StepTwoManager />} />
       <Route path="/sign-in/step-3-upload" element={<StepThreeUpload />} />
+      <Route path="/dashboard" element={<FacilityManagerDashboard />} />
     </Routes>
   );
 }

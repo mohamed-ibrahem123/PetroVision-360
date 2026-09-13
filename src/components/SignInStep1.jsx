@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from './common/Logo';
+import StepsIndicator from './common/StepsIndicator';
 import logoSrc from '../assets/logo.svg';
 import { api } from '../services/api';
 import './SignInStep1.css';
@@ -68,30 +69,7 @@ export default function SignInStep1() {
             <h1 className="pv-signin-title">Welcome to PETRO VISION</h1>
           </div>
 
-          {/* Stepper */}
-          <div className="pv-stepper">
-            <div className="pv-step pv-step-active">
-              <div className="pv-step-circle">1</div>
-              <div className="pv-step-info">
-                <span className="pv-step-name">Step 1</span>
-                <span className="pv-step-desc">Choose Your Role</span>
-              </div>
-            </div>
-            <div className="pv-step">
-              <div className="pv-step-circle">2</div>
-              <div className="pv-step-info">
-                <span className="pv-step-name">Step 2</span>
-                <span className="pv-step-desc">Facility Information</span>
-              </div>
-            </div>
-            <div className="pv-step">
-              <div className="pv-step-circle">3</div>
-              <div className="pv-step-info">
-                <span className="pv-step-name">Step 3</span>
-                <span className="pv-step-desc">Upload Evidence</span>
-              </div>
-            </div>
-          </div>
+          <StepsIndicator currentStep={1} />
 
           {error && (
             <div className="pv-signin-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>

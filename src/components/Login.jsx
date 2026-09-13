@@ -35,6 +35,20 @@ export default function Login() {
       
       if (token) {
         tokenStorage.set(token);
+
+        try {
+          const payloadStr = atob(token.split('.')[1]);
+          const payload = JSON.parse(payloadStr);
+          const role = payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || payload.role;
+          
+          if (role === 'FacilityManager') {
+            navigate('/dashboard');
+            return;
+          }
+        } catch (err) {
+          console.error('Failed to parse token for role redirection', err);
+        }
+
         navigate('/'); // Redirect to home/dashboard
       } else {
         // Fallback if the token isn't exactly where we expected, try to set the whole response or handle it
