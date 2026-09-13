@@ -1,10 +1,10 @@
-export default function RecentAlerts({ alerts }) {
+export default function RecentAlerts({ alerts, alertsSubtitle }) {
   return (
     <div className="fm-card">
       <div className="fm-section-header" style={{ marginBottom: 24 }}>
         <div>
           <h2 className="fm-section-title">Recent Alerts</h2>
-          <div className="fm-section-subtitle" style={{ color: '#f59e0b', fontWeight: 600 }}>7 Today</div>
+          <div className="fm-section-subtitle" style={{ color: '#f59e0b', fontWeight: 600 }}>{alertsSubtitle || '7 Today'}</div>
         </div>
         <a href="#view-all-alerts" className="fm-section-link">
           View All

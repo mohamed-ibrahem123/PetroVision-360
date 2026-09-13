@@ -4,16 +4,17 @@ import Logo from './common/Logo';
 import StepsIndicator from './common/StepsIndicator';
 import logoSrc from '../assets/logo.svg';
 import { api } from '../services/api';
+import './SignIn.css';
 import './StepTwoWM.css';
 
 export default function StepTwoWM() {
   const [facilities, setFacilities] = useState([]);
   const [departments, setDepartments] = useState([]);
-  
+
   const [selectedFacility, setSelectedFacility] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
-  
+
   const [loadingFacilities, setLoadingFacilities] = useState(true);
   const [loadingDepartments, setLoadingDepartments] = useState(false);
   const [loadingSubmit, setLoadingSubmit] = useState(false);
@@ -70,7 +71,7 @@ export default function StepTwoWM() {
       await api.post('/api/Onboarding/employee-info', {
         facilityId: selectedFacility,
         departmentId: selectedDepartment,
-        role: selectedRole
+        employeeRole: selectedRole
       });
       navigate('/sign-in/step-3-upload');
     } catch (err) {
@@ -107,7 +108,7 @@ export default function StepTwoWM() {
       {/* Right Side: Step 2 Content */}
       <div className="pv-signin-right">
         <div className="pv-step2-container">
-          
+
           <div className="pv-signin-header">
             <img src={logoSrc} alt="PetroVision 360 Logo" className="pv-signin-header-logo" />
             <h1 className="pv-signin-title">Welcome to PETRO VISION</h1>
@@ -117,7 +118,7 @@ export default function StepTwoWM() {
 
           {/* Form */}
           <form className="pv-step2-form" onSubmit={handleSubmit}>
-            
+
             {error && (
               <div className="pv-signin-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
                 {typeof error === 'string' ? error : (
@@ -134,14 +135,14 @@ export default function StepTwoWM() {
                 )}
               </div>
             )}
-            
+
             <div className="pv-form-group">
               <label className="pv-form-label">Facility Name*</label>
               <div className="pv-input-wrapper">
-                <select 
-                  className="pv-form-input pv-form-select" 
-                  value={selectedFacility} 
-                  onChange={(e) => setSelectedFacility(e.target.value)} 
+                <select
+                  className="pv-form-input pv-form-select"
+                  value={selectedFacility}
+                  onChange={(e) => setSelectedFacility(e.target.value)}
                   disabled={loadingFacilities || loadingSubmit}
                 >
                   <option value="" disabled hidden>{loadingFacilities ? 'Loading facilities...' : 'Select your facility'}</option>
@@ -160,16 +161,18 @@ export default function StepTwoWM() {
             <div className="pv-form-group">
               <label className="pv-form-label">Employee Role*</label>
               <div className="pv-input-wrapper">
-                <select 
-                  className="pv-form-input pv-form-select" 
+                <select
+                  className="pv-form-input pv-form-select"
                   value={selectedRole}
                   onChange={(e) => setSelectedRole(e.target.value)}
                   disabled={loadingSubmit}
                 >
                   <option value="" disabled hidden>Select your role</option>
-                  <option value="manager">Manager</option>
-                  <option value="supervisor">Supervisor</option>
-                  <option value="worker">Worker</option>
+                  <option value="SafetySupervisor">Safety Supervisor</option>
+                  <option value="FieldEngineer">Field Engineer</option>
+                  <option value="OperationsManager">Operations Manager</option>
+                  <option value="Technician">Technician</option>
+                  <option value="Inspector">Inspector</option>
                 </select>
                 <div className="pv-input-icon-right" style={{ pointerEvents: 'none' }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -182,8 +185,8 @@ export default function StepTwoWM() {
             <div className="pv-form-group">
               <label className="pv-form-label">Department Name*</label>
               <div className="pv-input-wrapper">
-                <select 
-                  className="pv-form-input pv-form-select" 
+                <select
+                  className="pv-form-input pv-form-select"
                   value={selectedDepartment}
                   onChange={(e) => setSelectedDepartment(e.target.value)}
                   disabled={!selectedFacility || loadingDepartments || loadingSubmit}
@@ -204,7 +207,7 @@ export default function StepTwoWM() {
             </div>
 
             <button type="submit" className="pv-step2-submit" disabled={loadingSubmit}>
-              {loadingSubmit ? 'Processing...' : 'Continue'} 
+              {loadingSubmit ? 'Processing...' : 'Continue'}
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>

@@ -4,6 +4,7 @@ import Logo from './common/Logo';
 import StepsIndicator from './common/StepsIndicator';
 import logoSrc from '../assets/logo.svg';
 import { api } from '../services/api';
+import './SignIn.css';
 import './SignInStep1.css';
 
 export default function SignInStep1() {

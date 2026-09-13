@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
 import logoSrc from '../../assets/logo.svg';
 
 export default function Logo({ className = '' }) {
   return (
-    <div className={`pv-logo flex items-center gap-3 ${className}`}>
+    <Link to="/" className={`pv-logo flex items-center gap-3 ${className}`} style={{ textDecoration: 'none' }}>
       <img
         src={logoSrc}
         alt="PetroVision 360 Logo"
@@ -13,6 +14,6 @@ export default function Logo({ className = '' }) {
       <span className="pv-brand-text">
         PETRO VISION360
       </span>
-    </div>
+    </Link>
   );
 }

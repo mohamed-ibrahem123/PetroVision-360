@@ -7,6 +7,9 @@ import StepTwoWM from './components/StepTwoWM';
 import StepTwoManager from './components/StepTwoManager';
 import StepThreeUpload from './components/StepThreeUpload';
 import FacilityManagerDashboard from './components/Dashboard/FacilityManagerDashboard';
+import DepartmentManagerDashboard from './components/Dashboard/DepartmentManagerDashboard';
+import ProtectedRoute from './components/common/ProtectedRoute';
+
 function AppRoutes() {
   const navigate = useNavigate();
 
@@ -40,7 +43,22 @@ function AppRoutes() {
       <Route path="/sign-in/step-2-wm" element={<StepTwoWM />} />
       <Route path="/sign-in/step-2-manager" element={<StepTwoManager />} />
       <Route path="/sign-in/step-3-upload" element={<StepThreeUpload />} />
-      <Route path="/dashboard" element={<FacilityManagerDashboard />} />
+      <Route 
+        path="/dashboard" 
+        element={
+          <ProtectedRoute allowedRoles={['FacilityManager']}>
+            <FacilityManagerDashboard />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/department-manager-dashboard" 
+        element={
+          <ProtectedRoute allowedRoles={['DepartmentManager', 'Department Manager']}>
+            <DepartmentManagerDashboard />
+          </ProtectedRoute>
+        } 
+      />
     </Routes>
   );
 }

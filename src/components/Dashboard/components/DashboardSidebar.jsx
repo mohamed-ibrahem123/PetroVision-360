@@ -1,20 +1,49 @@
 import { Link, useLocation } from 'react-router-dom';
+import { tokenStorage } from '../../../services/api';
 import logoSrc from '../../../assets/logo.svg';
 
 export default function DashboardSidebar({ isOpen }) {
   const location = useLocation();
   const currentPath = location.pathname;
 
-  const menuItems = [
-    { label: 'Dashboard', path: '/dashboard', icon: 'grid', badge: null },
-    { label: 'Digital Twin', path: '/dashboard/digital-twin', icon: 'box', badge: { text: 'Live', type: 'live' } },
-    { label: 'Live Monitoring', path: '/dashboard/monitoring', icon: 'video', badge: null },
-    { label: 'Alerts', path: '/dashboard/alerts', icon: 'bell', badge: { text: '7', type: 'warning' } },
-    { label: 'Incidents', path: '/dashboard/incidents', icon: 'alert-triangle', badge: { text: '1 Active', type: 'critical' } },
-    { label: 'Management Team', path: '/dashboard/team', icon: 'users', badge: null },
-    { label: 'Equipment & Assets', path: '/dashboard/assets', icon: 'settings', badge: null },
-    { label: 'Analytics & Reports', path: '/dashboard/analytics', icon: 'bar-chart', badge: null },
-  ];
+  let role = '';
+  const token = tokenStorage.get();
+  if (token) {
+    try {
+      const payloadStr = atob(token.split('.')[1]);
+      const payload = JSON.parse(payloadStr);
+      role = payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || payload.role;
+    } catch (e) {
+      console.error('Sidebar could not parse token role', e);
+    }
+  }
+
+  let menuItems = [];
+
+  if (role === 'DepartmentManager' || role === 'Department Manager') {
+    menuItems = [
+      { label: 'Dashboard', path: '/department-manager-dashboard', icon: 'grid', badge: null },
+      { label: 'Digital Twin', path: '/department-manager-dashboard/digital-twin', icon: 'box', badge: { text: 'Live', type: 'live' } },
+      { label: 'Live Monitoring', path: '/department-manager-dashboard/monitoring', icon: 'video', badge: null },
+      { label: 'Alerts', path: '/department-manager-dashboard/alerts', icon: 'bell', badge: { text: '4 Today', type: 'warning' } },
+      { label: 'Incidents', path: '/department-manager-dashboard/incidents', icon: 'alert-triangle', badge: { text: '1 Pending', type: 'critical' } },
+      { label: 'Technicians Team', path: '/department-manager-dashboard/team', icon: 'users', badge: null },
+      { label: 'Equipment & Assets', path: '/department-manager-dashboard/assets', icon: 'settings', badge: null },
+      { label: 'Analytics & Reports', path: '/department-manager-dashboard/analytics', icon: 'bar-chart', badge: null },
+    ];
+  } else {
+    // Default / Facility Manager
+    menuItems = [
+      { label: 'Dashboard', path: '/dashboard', icon: 'grid', badge: null },
+      { label: 'Digital Twin', path: '/dashboard/digital-twin', icon: 'box', badge: { text: 'Live', type: 'live' } },
+      { label: 'Live Monitoring', path: '/dashboard/monitoring', icon: 'video', badge: null },
+      { label: 'Alerts', path: '/dashboard/alerts', icon: 'bell', badge: { text: '7', type: 'warning' } },
+      { label: 'Incidents', path: '/dashboard/incidents', icon: 'alert-triangle', badge: { text: '1 Active', type: 'critical' } },
+      { label: 'Management Team', path: '/dashboard/team', icon: 'users', badge: null },
+      { label: 'Equipment & Assets', path: '/dashboard/assets', icon: 'settings', badge: null },
+      { label: 'Analytics & Reports', path: '/dashboard/analytics', icon: 'bar-chart', badge: null },
+    ];
+  }
 
   const renderIcon = (name) => {
     // Simple SVG placeholders based on feather icons

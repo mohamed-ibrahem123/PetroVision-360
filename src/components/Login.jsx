@@ -44,6 +44,9 @@ export default function Login() {
           if (role === 'FacilityManager') {
             navigate('/dashboard');
             return;
+          } else if (role === 'DepartmentManager' || role === 'Department Manager') {
+            navigate('/department-manager-dashboard');
+            return;
           }
         } catch (err) {
           console.error('Failed to parse token for role redirection', err);
