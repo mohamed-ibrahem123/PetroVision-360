@@ -4,10 +4,10 @@ import Logo from './common/Logo';
 import StepsIndicator from './common/StepsIndicator';
 import logoSrc from '../assets/logo.svg';
 import { api } from '../services/api';
-import './SignIn.css';
-import './SignInStep1.css';
+import './SignUp.css';
+import './SignUpStep1.css';
 
-export default function SignInStep1() {
+export default function SignUpStep1() {
   const [selectedRole, setSelectedRole] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -26,9 +26,9 @@ export default function SignInStep1() {
       await api.post('/api/Onboarding/role', { role: selectedRole });
 
       if (selectedRole === 'FacilityManager') {
-        navigate('/sign-in/step-2-manager');
+        navigate('/sign-up/step-2-manager');
       } else if (selectedRole === 'DepartmentManager' || selectedRole === 'Worker') {
-        navigate('/sign-in/step-2-wm');
+        navigate('/sign-up/step-2-wm');
       }
     } catch (err) {
       const errorData = err.response?.data || err.data;
@@ -52,28 +52,28 @@ export default function SignInStep1() {
   };
 
   return (
-    <div className="pv-signin-wrapper">
+    <div className="pv-signup-wrapper">
       {/* Left Side: Image with Overlay */}
-      <div className="pv-signin-left">
-        <div className="pv-signin-overlay" />
-        <div className="pv-signin-logo-container">
+      <div className="pv-signup-left">
+        <div className="pv-signup-overlay" />
+        <div className="pv-signup-logo-container">
           <Logo />
         </div>
       </div>
 
       {/* Right Side: Step 1 Content */}
-      <div className="pv-signin-right">
+      <div className="pv-signup-right">
         <div className="pv-step1-container">
 
-          <div className="pv-signin-header">
-            <img src={logoSrc} alt="PetroVision 360 Logo" className="pv-signin-header-logo" />
-            <h1 className="pv-signin-title">Welcome to PETRO VISION</h1>
+          <div className="pv-signup-header">
+            <img src={logoSrc} alt="PetroVision 360 Logo" className="pv-signup-header-logo" />
+            <h1 className="pv-signup-title">Welcome to PETRO VISION</h1>
           </div>
 
           <StepsIndicator currentStep={1} />
 
           {error && (
-            <div className="pv-signin-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
+            <div className="pv-signup-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
               {typeof error === 'string' ? error : (
                 <>
                   <div>{error.message}</div>

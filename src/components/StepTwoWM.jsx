@@ -4,7 +4,7 @@ import Logo from './common/Logo';
 import StepsIndicator from './common/StepsIndicator';
 import logoSrc from '../assets/logo.svg';
 import { api } from '../services/api';
-import './SignIn.css';
+import './SignUp.css';
 import './StepTwoWM.css';
 
 export default function StepTwoWM() {
@@ -73,7 +73,7 @@ export default function StepTwoWM() {
         departmentId: selectedDepartment,
         employeeRole: selectedRole
       });
-      navigate('/sign-in/step-3-upload');
+      navigate('/sign-up/step-3-upload');
     } catch (err) {
       const errorData = err.response?.data || err.data;
       if (errorData && (errorData.message || errorData.errors || errorData.title)) {
@@ -96,22 +96,22 @@ export default function StepTwoWM() {
   };
 
   return (
-    <div className="pv-signin-wrapper">
+    <div className="pv-signup-wrapper">
       {/* Left Side: Image with Overlay */}
-      <div className="pv-signin-left">
-        <div className="pv-signin-overlay" />
-        <div className="pv-signin-logo-container">
+      <div className="pv-signup-left">
+        <div className="pv-signup-overlay" />
+        <div className="pv-signup-logo-container">
           <Logo />
         </div>
       </div>
 
       {/* Right Side: Step 2 Content */}
-      <div className="pv-signin-right">
+      <div className="pv-signup-right">
         <div className="pv-step2-container">
 
-          <div className="pv-signin-header">
-            <img src={logoSrc} alt="PetroVision 360 Logo" className="pv-signin-header-logo" />
-            <h1 className="pv-signin-title">Welcome to PETRO VISION</h1>
+          <div className="pv-signup-header">
+            <img src={logoSrc} alt="PetroVision 360 Logo" className="pv-signup-header-logo" />
+            <h1 className="pv-signup-title">Welcome to PETRO VISION</h1>
           </div>
 
           <StepsIndicator currentStep={2} />
@@ -120,7 +120,7 @@ export default function StepTwoWM() {
           <form className="pv-step2-form" onSubmit={handleSubmit}>
 
             {error && (
-              <div className="pv-signin-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
+              <div className="pv-signup-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
                 {typeof error === 'string' ? error : (
                   <>
                     <div>{error.message}</div>

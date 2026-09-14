@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import WelcomePage from './components/WelcomePage';
 import Login from './components/Login';
-import SignIn from './components/SignIn';
-import SignInStep1 from './components/SignInStep1';
+import SignUp from './components/SignUp';
+import SignUpStep1 from './components/SignUpStep1';
 import StepTwoWM from './components/StepTwoWM';
 import StepTwoManager from './components/StepTwoManager';
 import StepThreeUpload from './components/StepThreeUpload';
@@ -14,10 +14,10 @@ function AppRoutes() {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    navigate('/sign-in');
+    navigate('/sign-up');
   };
 
-  const handleSignIn = () => {
+  const handleSignUp = () => {
     navigate('/login');
   };
 
@@ -32,17 +32,17 @@ function AppRoutes() {
         element={
           <WelcomePage 
             onGetStarted={handleGetStarted} 
-            onSignIn={handleSignIn} 
+            onSignUp={handleSignUp} 
             onDemo={handleDemo} 
           />
         } 
       />
       <Route path="/login" element={<Login />} />
-      <Route path="/sign-in" element={<SignIn />} />
-      <Route path="/sign-in/step-1" element={<SignInStep1 />} />
-      <Route path="/sign-in/step-2-wm" element={<StepTwoWM />} />
-      <Route path="/sign-in/step-2-manager" element={<StepTwoManager />} />
-      <Route path="/sign-in/step-3-upload" element={<StepThreeUpload />} />
+      <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/sign-up/step-1" element={<SignUpStep1 />} />
+      <Route path="/sign-up/step-2-wm" element={<StepTwoWM />} />
+      <Route path="/sign-up/step-2-manager" element={<StepTwoManager />} />
+      <Route path="/sign-up/step-3-upload" element={<StepThreeUpload />} />
       <Route 
         path="/dashboard" 
         element={

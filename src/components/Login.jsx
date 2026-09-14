@@ -32,7 +32,7 @@ export default function Login() {
 
       // Handle both { token: '...' } and string responses
       const token = response?.token || response?.data?.token || (typeof response === 'string' ? response : null);
-      
+
       if (token) {
         tokenStorage.set(token);
 
@@ -40,7 +40,7 @@ export default function Login() {
           const payloadStr = atob(token.split('.')[1]);
           const payload = JSON.parse(payloadStr);
           const role = payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] || payload.role;
-          
+
           if (role === 'FacilityManager') {
             navigate('/dashboard');
             return;
@@ -56,13 +56,13 @@ export default function Login() {
       } else {
         // Fallback if the token isn't exactly where we expected, try to set the whole response or handle it
         if (response && typeof response === 'object' && Object.keys(response).length > 0) {
-            // Some APIs might return a different structure
-            const possibleToken = Object.values(response).find(val => typeof val === 'string' && val.length > 20);
-            if(possibleToken) {
-                tokenStorage.set(possibleToken);
-                navigate('/');
-                return;
-            }
+          // Some APIs might return a different structure
+          const possibleToken = Object.values(response).find(val => typeof val === 'string' && val.length > 20);
+          if (possibleToken) {
+            tokenStorage.set(possibleToken);
+            navigate('/');
+            return;
+          }
         }
         setError('Login successful, but no token was returned.');
       }
@@ -75,7 +75,7 @@ export default function Login() {
         } else if (typeof errorData.errors === 'object' && errorData.errors !== null) {
           parsedErrors = Object.values(errorData.errors).flat();
         }
-        
+
         setError({
           message: errorData.message || errorData.title || err.message || 'Login failed.',
           errors: parsedErrors
@@ -137,9 +137,9 @@ export default function Login() {
                     <circle cx="12" cy="7" r="4"></circle>
                   </svg>
                 </div>
-                <input 
-                  type="text" 
-                  className="pv-form-input" 
+                <input
+                  type="text"
+                  className="pv-form-input"
                   placeholder="Enter your user name/email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -195,13 +195,13 @@ export default function Login() {
             </div>
 
             <button type="submit" className="pv-login-submit" disabled={loading}>
-              {loading ? 'Logging In...' : 'Login In'}
+              {loading ? 'Logging In...' : 'Login'}
             </button>
           </form>
 
           <div className="pv-login-footer">
             Don't have Account?
-            <Link to="/sign-in" className="pv-signup-link">Sign in</Link>
+            <Link to="/sign-up" className="pv-signup-link">Sign up</Link>
           </div>
 
         </div >

@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import Logo from './common/Logo';
 import logoSrc from '../assets/logo.svg';
 import { api, tokenStorage } from '../services/api';
-import './SignIn.css';
+import './SignUp.css';
 
-export default function SignIn() {
+export default function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -55,7 +55,7 @@ export default function SignIn() {
       }
 
       // Following existing project flow, navigate to step-1
-      navigate('/sign-in/step-1');
+      navigate('/sign-up/step-1');
     } catch (err) {
       const errorData = err.response?.data || err.data;
       if (errorData && (errorData.message || errorData.errors || errorData.title)) {
@@ -79,30 +79,30 @@ export default function SignIn() {
   };
 
   return (
-    <div className="pv-signin-wrapper">
+    <div className="pv-signup-wrapper">
       {/* Left Side: Image with Overlay */}
-      <div className="pv-signin-left">
-        <div className="pv-signin-overlay" />
-        <div className="pv-signin-logo-container">
+      <div className="pv-signup-left">
+        <div className="pv-signup-overlay" />
+        <div className="pv-signup-logo-container">
           <Logo />
         </div>
       </div>
 
       {/* Right Side: Form Section */}
-      <div className="pv-signin-right">
-        <div className="pv-signin-form-container">
+      <div className="pv-signup-right">
+        <div className="pv-signup-form-container">
 
-          <div className="pv-signin-header">
-            <img src={logoSrc} alt="PetroVision 360 Logo" className="pv-signin-header-logo" />
-            <h1 className="pv-signin-title">Welcome to PETRO VISION</h1>
-            <p className="pv-signin-subtitle">
+          <div className="pv-signup-header">
+            <img src={logoSrc} alt="PetroVision 360 Logo" className="pv-signup-header-logo" />
+            <h1 className="pv-signup-title">Welcome to PETRO VISION</h1>
+            <p className="pv-signup-subtitle">
               Securely access the PetroVision 360 facility safety management platform.
             </p>
           </div>
 
-          <form className="pv-signin-form" onSubmit={handleSubmit}>
+          <form className="pv-signup-form" onSubmit={handleSubmit}>
             {error && (
-              <div className="pv-signin-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
+              <div className="pv-signup-error" style={{ color: 'red', marginBottom: '1rem', fontSize: '0.875rem' }}>
                 {typeof error === 'string' ? error : (
                   <>
                     <div>{error.message}</div>
@@ -234,7 +234,7 @@ export default function SignIn() {
               </div>
             </div>
 
-            <button type="submit" className="pv-signin-submit" disabled={loading}>
+            <button type="submit" className="pv-signup-submit" disabled={loading}>
               {loading ? 'Processing...' : 'Next'}
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
@@ -243,7 +243,7 @@ export default function SignIn() {
             </button>
           </form>
 
-          <div className="pv-signin-footer">
+          <div className="pv-signup-footer">
             Already have an account?
             <Link to="/login" className="pv-login-link">Login</Link>
           </div>

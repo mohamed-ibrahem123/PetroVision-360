@@ -1,8 +1,8 @@
 /* ==========================================================================
-   SignIn Page Layout & Styles
+   SignUp Page Layout & Styles
    ========================================================================== */
 
-.pv-signin-wrapper {
+.pv-signup-wrapper {
   display: flex;
   min-height: 100vh;
   width: 100%;
@@ -10,7 +10,7 @@
 }
 
 /* Left Side: Image with Overlay */
-.pv-signin-left {
+.pv-signup-left {
   position: relative;
   flex: 1;
   display: none;
@@ -20,18 +20,18 @@
 }
 
 @media (min-width: 900px) {
-  .pv-signin-left {
+  .pv-signup-left {
     display: block;
   }
 }
 
-.pv-signin-overlay {
+.pv-signup-overlay {
   position: absolute;
   inset: 0;
   background-color: rgba(13, 62, 85, 0.85);
 }
 
-.pv-signin-logo-container {
+.pv-signup-logo-container {
   position: absolute;
   top: 40px;
   left: 40px;
@@ -49,13 +49,13 @@
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.pv-signin-logo-container:hover {
+.pv-signup-logo-container:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.3);
 }
 
 /* Right Side: Form Section */
-.pv-signin-right {
+.pv-signup-right {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -64,7 +64,7 @@
   padding: 40px 24px;
 }
 
-.pv-signin-form-container {
+.pv-signup-form-container {
   width: 100%;
   max-width: 420px;
   display: flex;
@@ -72,19 +72,19 @@
 }
 
 /* Form Header */
-.pv-signin-header {
+.pv-signup-header {
   text-align: center;
   margin-bottom: 32px;
 }
 
-.pv-signin-header-logo {
+.pv-signup-header-logo {
   width: 60px;
   height: 60px;
   margin-bottom: 16px;
   object-fit: contain;
 }
 
-.pv-signin-title {
+.pv-signup-title {
   font-family: var(--pv-font-heading);
   font-size: 1.55rem;
   font-weight: 700;
@@ -92,7 +92,7 @@
   margin-bottom: 12px;
 }
 
-.pv-signin-subtitle {
+.pv-signup-subtitle {
   font-size: 0.95rem;
   color: #64748b;
   line-height: 1.5;
@@ -101,7 +101,7 @@
 }
 
 /* Form Fields */
-.pv-signin-form {
+.pv-signup-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -170,7 +170,7 @@
 }
 
 /* Submit Button */
-.pv-signin-submit {
+.pv-signup-submit {
   width: 100%;
   background-color: #11536b;
   color: var(--pv-color-white);
@@ -189,11 +189,11 @@
   margin-top: 8px;
 }
 
-.pv-signin-submit:hover {
+.pv-signup-submit:hover {
   background-color: #0d4458;
 }
 
-.pv-signin-submit:active {
+.pv-signup-submit:active {
   transform: translateY(1px);
 }
 
@@ -224,36 +224,36 @@
   }
 }
 
-.pv-signin-left {
+.pv-signup-left {
   animation: pv-fade-in 1s ease-out forwards;
 }
 
-.pv-signin-header {
+.pv-signup-header {
   animation: pv-slide-up 0.6s ease-out forwards;
 }
 
-.pv-signin-form>.pv-form-group:nth-child(1) {
+.pv-signup-form>.pv-form-group:nth-child(1) {
   animation: pv-slide-up 0.5s ease-out 0.1s both;
 }
 
-.pv-signin-form>.pv-form-group:nth-child(2) {
+.pv-signup-form>.pv-form-group:nth-child(2) {
   animation: pv-slide-up 0.5s ease-out 0.2s both;
 }
 
-.pv-signin-form>.pv-form-group:nth-child(3) {
+.pv-signup-form>.pv-form-group:nth-child(3) {
   animation: pv-slide-up 0.5s ease-out 0.3s both;
 }
 
-.pv-signin-form>.pv-form-group:nth-child(4) {
+.pv-signup-form>.pv-form-group:nth-child(4) {
   animation: pv-slide-up 0.5s ease-out 0.4s both;
 }
 
-.pv-signin-form>.pv-signin-submit {
+.pv-signup-form>.pv-signup-submit {
   animation: pv-slide-up 0.5s ease-out 0.5s both;
 }
 
 /* Footer Link */
-.pv-signin-footer {
+.pv-signup-footer {
   text-align: center;
   margin-top: 24px;
   font-size: 0.85rem;

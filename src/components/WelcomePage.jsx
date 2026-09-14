@@ -2,7 +2,7 @@ import Navbar from './common/Navbar';
 import welcomeImg from '../assets/welcome-img.png';
 import './WelcomePage.css';
 
-export default function WelcomePage({ onGetStarted, onSignIn, onDemo }) {
+export default function WelcomePage({ onGetStarted, onSignUp, onDemo }) {
   return (
     <div className="pv-hero-wrapper">
       {/* Background Image with Cinematic Industrial Overlays */}
@@ -60,7 +60,7 @@ export default function WelcomePage({ onGetStarted, onSignIn, onDemo }) {
             <button
               type="button"
               className="pv-btn-secondary"
-              onClick={onSignIn}
+              onClick={onSignUp}
             >
               Login
             </button>

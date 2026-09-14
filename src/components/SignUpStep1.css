@@ -1,11 +1,11 @@
 /* ==========================================================================
-   SignInStep1 Layout & Styles (Reuses base SignIn/Login layout)
+   SignUpStep1 Layout & Styles (Reuses base SignUp/Login layout)
    ========================================================================== */
 
 /* The wrapper and left side are handled by existing global/shared classes or redefined here */
-/* In this case, we rely on the same structure. Since we import SignInStep1.css, we can redefine or ensure they exist. */
+/* In this case, we rely on the same structure. Since we import SignUpStep1.css, we can redefine or ensure they exist. */
 
-/* To guarantee styling without conflicting, we can import SignIn.css or redefine the layout.
+/* To guarantee styling without conflicting, we can import SignUp.css or redefine the layout.
    Let's redefine the specific parts for Step 1. */
 
 .pv-step1-container {
